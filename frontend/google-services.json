@@ -1,0 +1,47 @@
+{
+  "project_info": {
+    "project_number": "579350367641",
+    "project_id": "fir-c02e1",
+    "storage_bucket": "fir-c02e1.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:579350367641:android:90ab8da79d4ed8f8429708",
+        "android_client_info": {
+          "package_name": "com.prachigupta.pizzaport"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "579350367641-e7j1bce19vd6i0bm0apl3tihspu0v3v0.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.prachigupta.pizzaport",
+            "certificate_hash": "5e8f16062ea3cd2c4a0d547876baa6f38cabf625"
+          }
+        },
+        {
+          "client_id": "579350367641-o5ai8sb80fp3pmkua8vp0s25n7prg9bh.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAJsCz35HuHn6_DQ7poDxx7-TkzHr09y2w"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "579350367641-o5ai8sb80fp3pmkua8vp0s25n7prg9bh.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
