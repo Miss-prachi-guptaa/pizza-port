@@ -11,7 +11,7 @@ module.exports = {
         allowNull: false,
       },
 
-      userId: {
+      user_id: {
         type: Sequelize.INTEGER,
         allowNull: false,
         references: {
@@ -22,7 +22,7 @@ module.exports = {
         onDelete: 'RESTRICT',
       },
 
-      restaurantId: {
+      restaurant_id: {
         type: Sequelize.INTEGER,
         allowNull: false,
         references: {
@@ -46,7 +46,7 @@ module.exports = {
         defaultValue: 'placed',
       },
 
-      paymentMethod: {
+ payment_method: {
         type: Sequelize.ENUM(
           'upi_card',
           'cash_on_delivery'
@@ -54,7 +54,7 @@ module.exports = {
         allowNull: false,
       },
 
-      paymentStatus: {
+       payment_status: {
         type: Sequelize.ENUM(
           'pending',
           'paid',
@@ -65,28 +65,28 @@ module.exports = {
         defaultValue: 'pending',
       },
 
-      totalAmount: {
+      total_amount: {
         type: Sequelize.DECIMAL(10,2),
         allowNull: false,
       },
 
-      deliveryCharge: {
+      delivery_charge: {
         type: Sequelize.DECIMAL(10,2),
         allowNull: false,
         defaultValue: 0,
       },
 
-      deliveryAddress: {
+      delivery_address: {
         type: Sequelize.TEXT,
         allowNull: false,
       },
 
-      acceptedAt: {
+      accepted_at: {
         type: Sequelize.DATE,
         allowNull: true,
       },
 
-      closedAt: {
+      closed_at: {
         type: Sequelize.DATE,
         allowNull: true,
       },
@@ -108,12 +108,12 @@ module.exports = {
 
     await queryInterface.addIndex(
       'orders',
-      ['restaurantId', 'status']
+      ['restaurant_id', 'status']
     );
 
     await queryInterface.addIndex(
       'orders',
-      ['userId']
+      ['user_id']
     );
   },
 

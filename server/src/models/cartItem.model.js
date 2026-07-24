@@ -3,12 +3,12 @@ import { DataTypes } from 'sequelize';
 import sequelize from '../config/db.js';
 
 const CartItem = sequelize.define('CartItem', {
-  cartId: {
+  cart_id: {
     type: DataTypes.INTEGER,
     allowNull: false,
     references: { model: 'carts', key: 'id' },
   },
-  menuItemId: {
+  menu_item_id: {
     type: DataTypes.INTEGER,
     allowNull: false,
     references: { model: 'menu_items', key: 'id' },
@@ -36,8 +36,8 @@ const CartItem = sequelize.define('CartItem', {
 });
 
 CartItem.associate = (models) => {
-  CartItem.belongsTo(models.Cart, { foreignKey: 'cartId', as: 'cart' });
-  CartItem.belongsTo(models.MenuItem, { foreignKey: 'menuItemId', as: 'menuItem' });
+  CartItem.belongsTo(models.Cart, { foreignKey: 'cart_id', as: 'cart' });
+  CartItem.belongsTo(models.MenuItem, { foreignKey: 'menu_item_id', as: 'menuItem' });
 };
 
 export default CartItem;

@@ -11,7 +11,7 @@ module.exports = {
         allowNull: false,
       },
 
-      restaurantId: {
+      restaurant_id: {
         type: Sequelize.INTEGER,
         allowNull: false,
         references: {
@@ -22,7 +22,7 @@ module.exports = {
         onDelete: 'CASCADE',
       },
 
-      categoryId: {
+      category_id: {
         type: Sequelize.INTEGER,
         allowNull: false,
         references: {
@@ -33,7 +33,7 @@ module.exports = {
         onDelete: 'RESTRICT',
       },
 
-      cuisineId: {
+      cuisine_id: {
         type: Sequelize.INTEGER,
         allowNull: true,
         references: {
@@ -59,41 +59,36 @@ module.exports = {
         allowNull: true,
       },
 
-      foodType: {
+      food_type: {
         type: Sequelize.ENUM('veg', 'non_veg', 'egg'),
         allowNull: false,
         defaultValue: 'veg',
       },
 
-      halfPrice: {
+      base_price: {
         type: Sequelize.DECIMAL(10, 2),
         allowNull: true,
       },
 
-      fullPrice: {
-        type: Sequelize.DECIMAL(10, 2),
-        allowNull: true,
-      },
-
-      isAvailable: {
+      is_available: {
         type: Sequelize.BOOLEAN,
         allowNull: false,
         defaultValue: true,
       },
 
-      displayOrder: {
+      display_order: {
         type: Sequelize.INTEGER,
         allowNull: false,
         defaultValue: 0,
       },
 
-      ratingAverage: {
+      rating_average: {
         type: Sequelize.DECIMAL(2, 1),
         allowNull: false,
         defaultValue: 0,
       },
 
-      ratingCount: {
+      rating_count: {
         type: Sequelize.INTEGER,
         allowNull: false,
         defaultValue: 0,
@@ -108,7 +103,9 @@ module.exports = {
       updated_at: {
         type: Sequelize.DATE,
         allowNull: false,
-        defaultValue: Sequelize.literal('CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP'),
+        defaultValue: Sequelize.literal(
+          'CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP'
+        ),
       },
 
       deleted_at: {
@@ -117,9 +114,12 @@ module.exports = {
       },
     });
 
-    await queryInterface.addIndex('menu_items', ['restaurantId', 'isAvailable']);
+    await queryInterface.addIndex('menu_items', [
+      'restaurant_id',
+      'is_available',
+    ]);
 
-    await queryInterface.addIndex('menu_items', ['categoryId']);
+    await queryInterface.addIndex('menu_items', ['category_id']);
   },
 
   async down(queryInterface) {

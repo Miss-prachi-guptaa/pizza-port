@@ -10,7 +10,7 @@ module.exports = {
         allowNull: false,
       },
 
-      orderId: {
+      order_id: {
         type: Sequelize.INTEGER,
         allowNull: false,
         references: {
@@ -21,7 +21,7 @@ module.exports = {
         onDelete: 'CASCADE',
       },
 
-      menuItemId: {
+      menu_item_id: {
         type: Sequelize.INTEGER,
         allowNull: true,
         references: {
@@ -32,7 +32,7 @@ module.exports = {
         onDelete: 'SET NULL',
       },
 
-      itemNameSnapshot: {
+      item_name_snapshot: {
         type: Sequelize.STRING,
         allowNull: false,
       },
@@ -68,7 +68,7 @@ module.exports = {
       },
     });
 
-    await queryInterface.addIndex('order_items', ['orderId']);
+    await queryInterface.addIndex('order_items', ['order_id']);
   },
 
   async down(queryInterface) {

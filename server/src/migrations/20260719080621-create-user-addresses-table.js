@@ -10,7 +10,7 @@ module.exports = {
         allowNull: false,
       },
 
-      userId: {
+      user_id: {
         type: Sequelize.INTEGER,
         allowNull: false,
         references: {
@@ -37,12 +37,12 @@ module.exports = {
         allowNull: false,
       },
 
-      addressLine1: {
+      address_line_1: {
         type: Sequelize.STRING,
         allowNull: false,
       },
 
-      addressLine2: {
+      address_line_2: {
         type: Sequelize.STRING,
         allowNull: true,
       },
@@ -67,7 +67,7 @@ module.exports = {
         allowNull: true,
       },
 
-      isDefault: {
+      is_default: {
         type: Sequelize.BOOLEAN,
         allowNull: false,
         defaultValue: false,
@@ -88,11 +88,11 @@ module.exports = {
       },
     });
 
-    await queryInterface.addIndex('user_addresses', ['userId']);
+    await queryInterface.addIndex('user_addresses', ['user_id']);
 
     await queryInterface.addIndex('user_addresses', [
-      'userId',
-      'isDefault',
+      'user_id',
+      'is_default',
     ]);
   },
 

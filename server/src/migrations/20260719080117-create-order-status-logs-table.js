@@ -10,7 +10,7 @@ module.exports = {
         allowNull: false,
       },
 
-      orderId: {
+      order_id: {
         type: Sequelize.INTEGER,
         allowNull: false,
         references: {
@@ -33,7 +33,7 @@ module.exports = {
         allowNull: false,
       },
 
-      changedByRole: {
+      changed_by_role: {
         type: Sequelize.ENUM(
           'customer',
           'owner',

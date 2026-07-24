@@ -3,12 +3,12 @@ import { DataTypes } from 'sequelize';
 import sequelize from '../config/db.js';
 
 const Order = sequelize.define('Order', {
-  userId: {
+  user_id: {
     type: DataTypes.INTEGER,
     allowNull: false,
     references: { model: 'users', key: 'id' },
   },
-  restaurantId: {
+  restaurant_id: {
     type: DataTypes.INTEGER,
     allowNull: false,
     references: { model: 'restaurants', key: 'id' },
@@ -18,33 +18,33 @@ const Order = sequelize.define('Order', {
     allowNull: false,
     defaultValue: 'placed',
   },
-  paymentMethod: {
+  payment_method: {
     type: DataTypes.ENUM('upi_card', 'cash_on_delivery'),
     allowNull: false,
   },
-  paymentStatus: {
+   payment_status: {
     type: DataTypes.ENUM('pending', 'paid', 'failed', 'refunded'),
     allowNull: false,
     defaultValue: 'pending',
   },
-  totalAmount: {
+  total_amount: {
     type: DataTypes.DECIMAL(10, 2),
     allowNull: false,
   },
-  deliveryCharge: {
+  delivery_charge: {
     type: DataTypes.DECIMAL(10, 2),
     allowNull: false,
     defaultValue: 0,
   },
-  deliveryAddress: {
+  delivery_address: {
     type: DataTypes.TEXT,
     allowNull: false, // order snapshot — even if user later edits their saved address, this stays frozen
   },
-  acceptedAt: {
+  accepted_at: {
     type: DataTypes.DATE,
     allowNull: true, // set only when owner accepts — used for "response time" SLA metric later
   },
-  closedAt: {
+  closed_at: {
     type: DataTypes.DATE,
     allowNull: true, // set when order reaches delivered / rejected / cancelled — marks it "no longer active"
   },
@@ -58,12 +58,12 @@ const Order = sequelize.define('Order', {
 });
 
 Order.associate = (models) => {
-  Order.belongsTo(models.User, { foreignKey: 'userId', as: 'customer' });
-  Order.belongsTo(models.Restaurant, { foreignKey: 'restaurantId', as: 'restaurant' });
-  Order.hasMany(models.OrderItem, { foreignKey: 'orderId', as: 'items' });
-  Order.hasOne(models.Payment, { foreignKey: 'orderId', as: 'payment' });
-  Order.hasMany(models.Notification, { foreignKey: 'orderId', as: 'notifications' });
-  Order.hasMany(models.OrderStatusLog, { foreignKey: 'orderId', as: 'statusHistory' });
+  Order.belongsTo(models.User, { foreignKey: 'user_id', as: 'customer' });
+  Order.belongsTo(models.Restaurant, { foreignKey: 'restaurant_id', as: 'restaurant' });
+  Order.hasMany(models.OrderItem, { foreignKey: 'order_id', as: 'items' });
+  Order.hasOne(models.Payment, { foreignKey: 'order_id', as: 'payment' });
+  Order.hasMany(models.Notification, { foreignKey: 'order_id', as: 'notifications' });
+  Order.hasMany(models.OrderStatusLog, { foreignKey: 'order_id', as: 'statusHistory' });
 };
 
 export default Order;

@@ -8,7 +8,7 @@ const Category = sequelize.define('Category', {
     allowNull: false,
     unique: true,
   },
-  isActive: {
+  is_active: {
     type: DataTypes.BOOLEAN,
     allowNull: false,
     defaultValue: true,
@@ -19,7 +19,7 @@ const Category = sequelize.define('Category', {
 });
 
 Category.associate = (models) => {
-  Category.hasMany(models.MenuItem, { foreignKey: 'categoryId', as: 'menuItems' });
+  Category.hasMany(models.MenuItem, { foreignKey: 'category_id', as: 'menuItems' });
 };
 
 export default Category;

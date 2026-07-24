@@ -3,7 +3,7 @@ import { DataTypes } from 'sequelize';
 import sequelize from '../config/db.js';
 
 const OrderStatusLog = sequelize.define('OrderStatusLog', {
-  orderId: {
+  order_id: {
     type: DataTypes.INTEGER,
     allowNull: false,
     references: { model: 'orders', key: 'id' },
@@ -12,7 +12,7 @@ const OrderStatusLog = sequelize.define('OrderStatusLog', {
     type: DataTypes.ENUM('placed', 'preparing', 'out_for_delivery', 'delivered', 'rejected', 'cancelled'),
     allowNull: false,
   },
-  changedByRole: {
+  changed_by_role: {
     type: DataTypes.ENUM('customer', 'owner', 'system'),
     allowNull: false,
   },
@@ -27,7 +27,7 @@ const OrderStatusLog = sequelize.define('OrderStatusLog', {
 });
 
 OrderStatusLog.associate = (models) => {
-  OrderStatusLog.belongsTo(models.Order, { foreignKey: 'orderId', as: 'order' });
+  OrderStatusLog.belongsTo(models.Order, { foreignKey: 'order_id', as: 'order' });
 };
 
 export default OrderStatusLog;

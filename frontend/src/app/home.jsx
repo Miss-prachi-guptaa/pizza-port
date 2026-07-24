@@ -27,7 +27,7 @@ const MENU_ITEMS = RAW_MENU_ITEMS.map((item) => ({
   id: item.id,
   name: item.name,
   subtitle: item.subtitle,
-  price: item.basePrice,
+  price: item.base_price,
   rating: item.rating,
   category: item.category,
   icon: item.icon,
@@ -88,14 +88,14 @@ export default function Home() {
         style={styles.chipList}
         contentContainerStyle={styles.chipRow}
         renderItem={({ item }) => {
-          const isActive = item === activeCategory;
+          const is_active = item === activeCategory;
           return (
             <TouchableOpacity
-              style={[styles.chip, isActive && styles.chipActive]}
+              style={[styles.chip, is_active && styles.chipActive]}
               onPress={() => setActiveCategory(item)}
             >
               <Text
-                style={[styles.chipText, isActive && styles.chipTextActive]}
+                style={[styles.chipText, is_active && styles.chipTextActive]}
               >
                 {item}
               </Text>

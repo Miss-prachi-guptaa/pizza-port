@@ -3,64 +3,37 @@
 /** @type {import('sequelize-cli').Migration} */
 module.exports = {
   async up(queryInterface, Sequelize) {
-    await queryInterface.createTable('restaurants', {
+    await queryInterface.createTable('menu_item_variants', {
       id: {
         type: Sequelize.INTEGER,
-        allowNull: false,
-        autoIncrement: true,
         primaryKey: true,
+        autoIncrement: true,
+        allowNull: false,
       },
 
-      owner_id: {
+      menu_item_id: {
         type: Sequelize.INTEGER,
         allowNull: false,
         references: {
-          model: 'users',
+          model: 'menu_items',
           key: 'id',
         },
         onUpdate: 'CASCADE',
         onDelete: 'CASCADE',
       },
 
-      name: {
-        type: Sequelize.STRING,
+      label: {
+        type: Sequelize.STRING(50),
         allowNull: false,
       },
 
-      address: {
-        type: Sequelize.TEXT,
+      price: {
+        type: Sequelize.DECIMAL(10, 2),
         allowNull: false,
       },
 
-      phone: {
-        type: Sequelize.STRING,
-        allowNull: true,
-      },
-
-      logo: {
-        type: Sequelize.STRING,
-        allowNull: true,
-      },
-
-      is_Open: {
-        type: Sequelize.BOOLEAN,
-        allowNull: false,
-        defaultValue: true,
-      },
-
-      avg_preparation_time: {
+      display_order: {
         type: Sequelize.INTEGER,
-        allowNull: true,
-        comment: 'in minutes',
-      },
-
-      min_order_for_free_delivery: {
-        type: Sequelize.DECIMAL(10, 2),
-        allowNull: true,
-      },
-
-      delivery_charge: {
-        type: Sequelize.DECIMAL(10, 2),
         allowNull: false,
         defaultValue: 0,
       },
@@ -79,9 +52,18 @@ module.exports = {
         ),
       },
     });
+
+    await queryInterface.addIndex('menu_item_variants', ['menu_item_id']);
+
+    // Same label ek hi item me duplicate na ho
+    await queryInterface.addConstraint('menu_item_variants', {
+      fields: ['menu_item_id', 'label'],
+      type: 'unique',
+      name: 'unique_menu_item_variant_label',
+    });
   },
 
   async down(queryInterface) {
-    await queryInterface.dropTable('restaurants');
+    await queryInterface.dropTable('menu_item_variants');
   },
 };

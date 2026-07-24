@@ -10,7 +10,7 @@ module.exports = {
         allowNull: false,
       },
 
-      orderId: {
+      order_id: {
         type: Sequelize.INTEGER,
         allowNull: false,
         unique: true,
@@ -35,7 +35,7 @@ module.exports = {
         allowNull: false,
       },
 
-      gatewayTxnId: {
+      gateway_txn_id: {
         type: Sequelize.STRING,
         allowNull: true,
         unique: true,
@@ -52,7 +52,7 @@ module.exports = {
         defaultValue: 'pending',
       },
 
-      paidAt: {
+      paid_at: {
         type: Sequelize.DATE,
         allowNull: true,
       },

@@ -133,7 +133,7 @@ export const googleLogin = async ({ idToken }) => {
   }
 
   const {
-    sub: googleId,
+    sub: google_id,
     email,
     name,
     picture,
@@ -141,7 +141,7 @@ export const googleLogin = async ({ idToken }) => {
 
   let user = await User.findOne({
     where: {
-      google_id: googleId,
+      google_id: google_id,
     },
   });
 
@@ -151,7 +151,7 @@ export const googleLogin = async ({ idToken }) => {
     });
 
     if (user) {
-      user.google_id = googleId;
+      user.google_id = google_id;
       user.provider = 'google';
       user.avatar = user.avatar || picture;
 
@@ -160,7 +160,7 @@ export const googleLogin = async ({ idToken }) => {
       user = await User.create({
         name: name || '',
         email,
-        google_id: googleId,
+        google_id: google_id,
         avatar: picture,
         provider: 'google',
       });

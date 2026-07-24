@@ -3,12 +3,12 @@ import { DataTypes } from 'sequelize';
 import sequelize from '../config/db.js';
 
 const Notification = sequelize.define('Notification', {
-  orderId: {
+  order_id: {
     type: DataTypes.INTEGER,
     allowNull: true, // kuch notifications order se unrelated bhi ho sakti hain (future: promo, etc.)
     references: { model: 'orders', key: 'id' },
   },
-  recipientId: {
+  recipient_id: {
     type: DataTypes.INTEGER,
     allowNull: false,
     references: { model: 'users', key: 'id' },
@@ -27,12 +27,12 @@ const Notification = sequelize.define('Notification', {
     allowNull: false,
     defaultValue: 'pending',
   },
-  isRead: {
+  is_read: {
     type: DataTypes.BOOLEAN,
     allowNull: false,
     defaultValue: false,
   },
-  sentAt: {
+  sent_at: {
     type: DataTypes.DATE,
     allowNull: true,
   },
@@ -43,8 +43,8 @@ const Notification = sequelize.define('Notification', {
 });
 
 Notification.associate = (models) => {
-  Notification.belongsTo(models.Order, { foreignKey: 'orderId', as: 'order' });
-  Notification.belongsTo(models.User, { foreignKey: 'recipientId', as: 'recipient' });
+  Notification.belongsTo(models.Order, { foreignKey: 'order_id', as: 'order' });
+  Notification.belongsTo(models.User, { foreignKey: 'recipient_id', as: 'recipient' });
 };
 
 export default Notification;

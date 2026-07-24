@@ -4,7 +4,7 @@ import { DataTypes } from 'sequelize';
 import sequelize from '../config/db.js';
 
 const UserAddress = sequelize.define('UserAddress', {
-  userId: {
+  user_id: {
     type: DataTypes.INTEGER,
     allowNull: false,
     references: {
@@ -29,12 +29,12 @@ const UserAddress = sequelize.define('UserAddress', {
     allowNull: false,
   },
 
-  addressLine1: {
+  address_line_1: {
     type: DataTypes.STRING,
     allowNull: false,
   },
 
-  addressLine2: {
+  address_line_2: {
     type: DataTypes.STRING,
     allowNull: true,
   },
@@ -59,7 +59,7 @@ const UserAddress = sequelize.define('UserAddress', {
     allowNull: true,
   },
 
-  isDefault: {
+  is_default: {
     type: DataTypes.BOOLEAN,
     allowNull: false,
     defaultValue: false,
@@ -71,7 +71,7 @@ const UserAddress = sequelize.define('UserAddress', {
 
 UserAddress.associate = (models) => {
   UserAddress.belongsTo(models.User, {
-    foreignKey: 'userId',
+    foreignKey: 'user_id',
     as: 'user',
   });
 };

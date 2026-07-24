@@ -10,7 +10,7 @@ module.exports = {
         primaryKey: true,
       },
 
-      orderId: {
+      order_id: {
         type: Sequelize.INTEGER,
         allowNull: true,
         references: {
@@ -21,7 +21,7 @@ module.exports = {
         onDelete: 'SET NULL',
       },
 
-      recipientId: {
+      recipient_id: {
         type: Sequelize.INTEGER,
         allowNull: false,
         references: {
@@ -58,13 +58,13 @@ module.exports = {
         defaultValue: 'pending',
       },
 
-      isRead: {
+      is_read: {
         type: Sequelize.BOOLEAN,
         allowNull: false,
         defaultValue: false,
       },
 
-      sentAt: {
+      sent_at: {
         type: Sequelize.DATE,
         allowNull: true,
       },
@@ -86,7 +86,7 @@ module.exports = {
 
     await queryInterface.addIndex(
       'notifications',
-      ['recipientId', 'isRead']
+      ['recipient_id', 'is_read']
     );
   },
 

@@ -1,7 +1,7 @@
 import { Router } from 'express';
 
 import {authRoutes} from './auth.route.js';
-// import menuRoutes from './menu.route.js';
+import  {menuRoutes}  from './menu.route.js';
 // import customerRoutes from './customer.route.js';
 // import ownerRoutes from './owner.route.js';
 // import adminRoutes from './admin.route.js';
@@ -9,7 +9,7 @@ import {authRoutes} from './auth.route.js';
 const router = Router();
 
 router.use('/auth', authRoutes);
-// router.use('/menu', menuRoutes);
+router.use('/menu', menuRoutes);
 // router.use('/', customerRoutes);     // /cart, /addresses, /orders (role-guarded inside)
 // router.use('/owner', ownerRoutes);
 // router.use('/admin', adminRoutes);

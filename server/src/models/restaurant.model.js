@@ -3,7 +3,7 @@ import { DataTypes } from 'sequelize';
 import sequelize from '../config/db.js';
 
 const Restaurant = sequelize.define('Restaurant', {
- ownerId: {
+ owner_id: {
   type: DataTypes.INTEGER,
   allowNull: false,
   references: {
@@ -17,19 +17,19 @@ const Restaurant = sequelize.define('Restaurant', {
   address: { type: DataTypes.TEXT, allowNull: false },
   phone: { type: DataTypes.STRING, allowNull: true },
   logo: { type: DataTypes.STRING, allowNull: true },
-  isOpen: { type: DataTypes.BOOLEAN, allowNull: false, defaultValue: true },
-  avgPreparationTime: { type: DataTypes.INTEGER, allowNull: true, comment: 'in minutes' },
-  minOrderForFreeDelivery: { type: DataTypes.DECIMAL(10, 2), allowNull: true },
-  deliveryCharge: { type: DataTypes.DECIMAL(10, 2), allowNull: false, defaultValue: 0 },
+  is_open: { type: DataTypes.BOOLEAN, allowNull: false, defaultValue: true },
+  avg_preparation_time: { type: DataTypes.INTEGER, allowNull: true, comment: 'in minutes' },
+  min_order_for_free_delivery: { type: DataTypes.DECIMAL(10, 2), allowNull: true },
+  delivery_charge: { type: DataTypes.DECIMAL(10, 2), allowNull: false, defaultValue: 0 },
 }, {
   tableName: 'restaurants',
   timestamps: true,
 });
 
 Restaurant.associate = (models) => {
-  Restaurant.belongsTo(models.User, { foreignKey: 'ownerId', as: 'owner' });
-  Restaurant.hasMany(models.MenuItem, { foreignKey: 'restaurantId', as: 'menuItems' });
-  Restaurant.hasMany(models.Order, { foreignKey: 'restaurantId', as: 'orders' });
+  Restaurant.belongsTo(models.User, { foreignKey: 'owner_id', as: 'owner' });
+  Restaurant.hasMany(models.MenuItem, { foreignKey: 'restaurant_id', as: 'menuItems' });
+  Restaurant.hasMany(models.Order, { foreignKey: 'restaurant_id', as: 'orders' });
 };
 
 export default Restaurant;

@@ -7,7 +7,7 @@ const User = sequelize.define('User', {
   email: { type: DataTypes.STRING, allowNull: false, unique: true, validate: { isEmail: true } },
   password: { type: DataTypes.STRING, allowNull: true },
   avatar: { type: DataTypes.STRING, allowNull: true },
-googleId: { type: DataTypes.STRING, allowNull: true, unique: true, field: 'googleId' },
+google_id: { type: DataTypes.STRING, allowNull: true, unique: true, field: 'google_id' },
   provider: { type: DataTypes.ENUM('email', 'google'), allowNull: false, defaultValue: 'email' },
   role: { type: DataTypes.ENUM('customer', 'owner', 'admin'), allowNull: false, defaultValue: 'customer' },
   phone: { type: DataTypes.STRING, allowNull: true },
@@ -39,14 +39,14 @@ User.prototype.toJSON = function () {
 };
 
 User.associate = (models) => {
-  User.hasOne(models.Restaurant, { foreignKey: 'ownerId', as: 'restaurant' });
-  User.hasOne(models.Cart, { foreignKey: 'userId', as: 'cart' });
-  User.hasMany(models.Order, { foreignKey: 'userId', as: 'orders' });
+  User.hasOne(models.Restaurant, { foreignKey: 'owner_id', as: 'restaurant' });
+  User.hasOne(models.Cart, { foreignKey: 'user_id', as: 'cart' });
+  User.hasMany(models.Order, { foreignKey: 'user_id', as: 'orders' });
   User.hasMany(models.UserAddress, {
-  foreignKey: 'userId',
+  foreignKey: 'user_id',
   as: 'addresses',
 });
-  User.hasMany(models.Notification, { foreignKey: 'recipientId', as: 'notifications' });
+  User.hasMany(models.Notification, { foreignKey: 'recipient_id', as: 'notifications' });
 };
 
 export default User;

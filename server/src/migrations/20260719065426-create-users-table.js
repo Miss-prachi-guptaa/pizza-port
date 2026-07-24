@@ -32,7 +32,7 @@ module.exports = {
         allowNull: true,
       },
 
-      googleId: {
+      google_id: {
         type: Sequelize.STRING,
         allowNull: true,
         unique: true,
@@ -55,10 +55,7 @@ module.exports = {
         allowNull: true,
       },
 
-      address: {
-        type: Sequelize.TEXT,
-        allowNull: true,
-      },
+    
 
       created_at: {
         type: Sequelize.DATE,

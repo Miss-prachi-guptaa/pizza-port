@@ -3,17 +3,17 @@ import { DataTypes } from 'sequelize';
 import sequelize from '../config/db.js';
 
 const OrderItem = sequelize.define('OrderItem', {
-  orderId: {
+  order_id: {
     type: DataTypes.INTEGER,
     allowNull: false,
     references: { model: 'orders', key: 'id' },
   },
-  menuItemId: {
+  menu_item_id: {
     type: DataTypes.INTEGER,
     allowNull: true, // agar original MenuItem kabhi delete ho jaye, history phir bhi surakshit rahe
     references: { model: 'menu_items', key: 'id' },
   },
-  itemNameSnapshot: {
+  item_name_snapshot: {
     type: DataTypes.STRING,
     allowNull: false, // MenuItem.name badal jaye to bhi ye order ka purana naam hi dikhayega
   },
@@ -43,8 +43,8 @@ const OrderItem = sequelize.define('OrderItem', {
 });
 
 OrderItem.associate = (models) => {
-  OrderItem.belongsTo(models.Order, { foreignKey: 'orderId', as: 'order' });
-  OrderItem.belongsTo(models.MenuItem, { foreignKey: 'menuItemId', as: 'menuItem' });
+  OrderItem.belongsTo(models.Order, { foreignKey: 'order_id', as: 'order' });
+  OrderItem.belongsTo(models.MenuItem, { foreignKey: 'menu_item_id', as: 'menuItem' });
 };
 
 export default OrderItem;

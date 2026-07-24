@@ -8,7 +8,7 @@ const Cuisine = sequelize.define('Cuisine', {
     allowNull: false,
     unique: true,
   },
-  isActive: {
+  is_active: {
     type: DataTypes.BOOLEAN,
     allowNull: false,
     defaultValue: true,
@@ -19,7 +19,7 @@ const Cuisine = sequelize.define('Cuisine', {
 });
 
 Cuisine.associate = (models) => {
-  Cuisine.hasMany(models.MenuItem, { foreignKey: 'cuisineId', as: 'menuItems' });
+  Cuisine.hasMany(models.MenuItem, { foreignKey: 'cuisine_id', as: 'menuItems' });
 };
 
 export default Cuisine;

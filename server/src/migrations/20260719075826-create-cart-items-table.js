@@ -11,7 +11,7 @@ module.exports = {
         allowNull: false,
       },
 
-      cartId: {
+      cart_id: {
         type: Sequelize.INTEGER,
         allowNull: false,
         references: {
@@ -22,7 +22,7 @@ module.exports = {
         onDelete: 'CASCADE',
       },
 
-      menuItemId: {
+      menu_item_id: {
         type: Sequelize.INTEGER,
         allowNull: false,
         references: {
@@ -62,7 +62,7 @@ module.exports = {
 
     await queryInterface.addIndex(
       'cart_items',
-      ['cartId', 'menuItemId', 'portion'],
+      ['cart_id', 'menu_item_id', 'portion'],
       {
         unique: true,
       }

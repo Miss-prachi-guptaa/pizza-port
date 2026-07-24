@@ -6,15 +6,15 @@ module.exports = {
     await queryInterface.bulkInsert('restaurants', [
       {
         id: 1,
-        ownerId: 1,
+        owner_id: 1,
         name: 'Pizza Garage',
         address: 'Main Road, Front of Cinema Hall, Ghosi',
         phone: '7267807008',
         logo: null,
-        isOpen: true,
-        avgPreparationTime: 25,
-        minOrderForFreeDelivery: 299.00,
-        deliveryCharge: 0.00,
+        is_open: true,
+        avg_preparation_time: 25,
+        min_order_for_free_delivery: 299.00,
+        delivery_charge: 0.00,
         created_at: new Date(),
         updated_at: new Date(),
       }

@@ -3,7 +3,7 @@ import { DataTypes } from 'sequelize';
 import sequelize from '../config/db.js';
 
 const Payment = sequelize.define('Payment', {
-  orderId: {
+  order_id: {
     type: DataTypes.INTEGER,
     allowNull: false,
     unique: true, // 1 order : 1 payment record
@@ -17,7 +17,7 @@ const Payment = sequelize.define('Payment', {
     type: DataTypes.ENUM('upi_card', 'cash_on_delivery'),
     allowNull: false, // Order.paymentMethod se hamesha match hona chahiye
   },
-  gatewayTxnId: {
+  gateway_txn_id: {
     type: DataTypes.STRING,
     allowNull: true, // COD ke liye null; online payment ke liye gateway ID
     unique: true,
@@ -27,7 +27,7 @@ const Payment = sequelize.define('Payment', {
     allowNull: false,
     defaultValue: 'pending',
   },
-  paidAt: {
+  paid_at: {
     type: DataTypes.DATE,
     allowNull: true,
   },
@@ -37,7 +37,7 @@ const Payment = sequelize.define('Payment', {
 });
 
 Payment.associate = (models) => {
-  Payment.belongsTo(models.Order, { foreignKey: 'orderId', as: 'order' });
+  Payment.belongsTo(models.Order, { foreignKey: 'order_id', as: 'order' });
 };
 
 export default Payment;

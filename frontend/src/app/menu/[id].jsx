@@ -45,7 +45,7 @@ export default function MenuItemDetail() {
   };
 
   const sizePrice =
-    item.sizes.find((s) => s.label === selectedSize)?.price || item.basePrice;
+    item.sizes.find((s) => s.label === selectedSize)?.price || item.base_price;
   const toppingsPrice = item.toppings
     .filter((t) => selectedToppings.includes(t.id))
     .reduce((sum, t) => sum + t.price, 0);
@@ -54,7 +54,7 @@ export default function MenuItemDetail() {
   const handleAddItem = () => {
     // POST /cart/items goes here once API is wired
     const payload = {
-      menuItemId: item.id,
+      menu_item_id: item.id,
       size: selectedSize,
       toppings: selectedToppings,
       instructions,
@@ -106,20 +106,26 @@ export default function MenuItemDetail() {
         </View>
         <View style={styles.sizeRow}>
           {item.sizes.map((size) => {
-            const isActive = size.label === selectedSize;
+            const is_active = size.label === selectedSize;
             return (
               <TouchableOpacity
                 key={size.label}
-                style={[styles.sizeCard, isActive && styles.sizeCardActive]}
+                style={[styles.sizeCard, is_active && styles.sizeCardActive]}
                 onPress={() => setSelectedSize(size.label)}
               >
                 <Text
-                  style={[styles.sizeLabel, isActive && styles.sizeLabelActive]}
+                  style={[
+                    styles.sizeLabel,
+                    is_active && styles.sizeLabelActive,
+                  ]}
                 >
                   {size.label}
                 </Text>
                 <Text
-                  style={[styles.sizePrice, isActive && styles.sizeLabelActive]}
+                  style={[
+                    styles.sizePrice,
+                    is_active && styles.sizeLabelActive,
+                  ]}
                 >
                   Rs {size.price}
                 </Text>
