@@ -15,8 +15,8 @@ module.exports = {
         avgPreparationTime: 25,
         minOrderForFreeDelivery: 299.00,
         deliveryCharge: 0.00,
-        createdAt: new Date(),
-        updatedAt: new Date(),
+        created_at: new Date(),
+        updated_at: new Date(),
       }
     ], {});
 

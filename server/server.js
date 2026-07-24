@@ -3,7 +3,8 @@ import express from "express";
 import cors from "cors";
 
 import sequelize from "./src/config/db.js";
-import authRoutes from "./src/routes/authRoutes.js";
+import router from "./src/routes/index.js";
+
 
 dotenv.config();
 
@@ -12,7 +13,7 @@ const app = express();
 app.use(cors());
 app.use(express.json());
 
-app.use('/api/auth', authRoutes);
+app.use('/api/v1', router);
 
 const PORT = process.env.PORT || 5000;
 

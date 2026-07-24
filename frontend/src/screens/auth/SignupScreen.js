@@ -67,7 +67,7 @@ const SignupScreen = () => {
     if (!validate()) return;
     setLoading(true);
     try {
-      const response = await api.post("/auth/signup", {
+      const response = await api.post("/auth/register", {
         fullName: fullName.trim(),
         email: email.trim(),
         password,
@@ -77,12 +77,15 @@ const SignupScreen = () => {
       const { token, user } = response.data;
       await login(token, user);
       router.replace("/home");
-    } catch (err) {
-      const message = err.response?.data?.message || "Signup mein dikkat aayi. Dobara try karo.";
-      Alert.alert("Error", message);
-    } finally {
-      setLoading(false);
-    }
+    } catch (error) {
+  console.log("Signup Error:", error);
+  console.log("Response:", error.response?.data);
+
+  Alert.alert(
+    "Error",
+    JSON.stringify(error.response?.data || error.message)
+  );
+}
   };
 
   const handleGoogleSignup = async () => {

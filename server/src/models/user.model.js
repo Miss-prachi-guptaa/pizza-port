@@ -7,7 +7,7 @@ const User = sequelize.define('User', {
   email: { type: DataTypes.STRING, allowNull: false, unique: true, validate: { isEmail: true } },
   password: { type: DataTypes.STRING, allowNull: true },
   avatar: { type: DataTypes.STRING, allowNull: true },
-  googleId: { type: DataTypes.STRING, allowNull: true, unique: true },
+googleId: { type: DataTypes.STRING, allowNull: true, unique: true, field: 'googleId' },
   provider: { type: DataTypes.ENUM('email', 'google'), allowNull: false, defaultValue: 'email' },
   role: { type: DataTypes.ENUM('customer', 'owner', 'admin'), allowNull: false, defaultValue: 'customer' },
   phone: { type: DataTypes.STRING, allowNull: true },

@@ -22,8 +22,8 @@ const OrderStatusLog = sequelize.define('OrderStatusLog', {
   },
 }, {
   tableName: 'order_status_logs',
-  timestamps: true, // createdAt = exact moment of this transition
-  updatedAt: false,  // logs are append-only, never edited
+  timestamps: true, // created_at = exact moment of this transition
+  updated_at: false,  // logs are append-only, never edited
 });
 
 OrderStatusLog.associate = (models) => {

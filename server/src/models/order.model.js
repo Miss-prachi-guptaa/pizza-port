@@ -50,7 +50,7 @@ const Order = sequelize.define('Order', {
   },
 }, {
   tableName: 'orders',
-  timestamps: true, // createdAt IS placed_at — no need for a separate redundant column
+  timestamps: true, // created_at IS placed_at — no need for a separate redundant column
   indexes: [
     { fields: ['restaurant_id', 'status'] }, // owner's "incoming orders" query
     { fields: ['user_id'] },                  // customer's order history query

@@ -19,8 +19,8 @@ module.exports = {
         role: 'owner',
         phone: '7267807008',
         address: 'Main Road, Front of Cinema Hall, Ghosi',
-        createdAt: new Date(),
-        updatedAt: new Date(),
+        created_at: new Date(),
+        updated_at: new Date(),
       },
 
       {
@@ -34,8 +34,8 @@ module.exports = {
         role: 'customer',
         phone: '9876543210',
         address: 'Ghosi',
-        createdAt: new Date(),
-        updatedAt: new Date(),
+        created_at: new Date(),
+        updated_at: new Date(),
       },
 
       {
@@ -49,8 +49,8 @@ module.exports = {
         role: 'admin',
         phone: '9999999999',
         address: 'Head Office',
-        createdAt: new Date(),
-        updatedAt: new Date(),
+        created_at: new Date(),
+        updated_at: new Date(),
       }
     ], {});
 

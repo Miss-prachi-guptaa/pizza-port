@@ -66,7 +66,7 @@ const MenuItem = sequelize.define('MenuItem', {
 }, {
   tableName: 'menu_items',
   timestamps: true,
-  paranoid: true, // soft delete — adds deletedAt, destroy() just sets this instead of removing the row
+  paranoid: true, // soft delete — adds deleted_at, destroy() just sets this instead of removing the row
   indexes: [
     { fields: ['restaurant_id', 'is_available'] }, // menu-load query ke liye
     { fields: ['category_id'] },

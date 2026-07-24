@@ -17,9 +17,9 @@ module.exports = {
         displayOrder: 12,
         ratingAverage: 0,
         ratingCount: 0,
-        createdAt: new Date(),
-        updatedAt: new Date(),
-        deletedAt: null,
+        created_at: new Date(),
+        updated_at: new Date(),
+        deleted_at: null,
       },
       {
         restaurantId: 1,
@@ -35,9 +35,9 @@ module.exports = {
         displayOrder: 13,
         ratingAverage: 0,
         ratingCount: 0,
-        createdAt: new Date(),
-        updatedAt: new Date(),
-        deletedAt: null,
+        created_at: new Date(),
+        updated_at: new Date(),
+        deleted_at: null,
       },
       {
         restaurantId: 1,
@@ -53,9 +53,9 @@ module.exports = {
         displayOrder: 14,
         ratingAverage: 0,
         ratingCount: 0,
-        createdAt: new Date(),
-        updatedAt: new Date(),
-        deletedAt: null,
+        created_at: new Date(),
+        updated_at: new Date(),
+        deleted_at: null,
       }
     ], {});
   },

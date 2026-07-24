@@ -65,12 +65,20 @@ const LoginScreen = () => {
       await login(token, user);
       router.replace("/home");
     } catch (err) {
-      console.log("Google login error:", err);
-      Alert.alert("Error", "Google se login mein dikkat aayi.");
-    } finally {
-      setGoogleLoading(false);
-    }
-  };
+    console.error("Google Login Error:", err);
+
+    console.log("Message:", err.response?.data?.message);
+    console.log("Status:", err.response?.status);
+    console.log("Full Error:", err.response?.data);
+
+    Alert.alert(
+      "Error",
+      err.response?.data?.message || err.message
+    );
+  } finally {
+    setGoogleLoading(false);
+  }
+};
 
   return (
     <KeyboardAvoidingView
